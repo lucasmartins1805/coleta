@@ -10,12 +10,25 @@ function criarCardHTML(item) {
 
     return `
         <div class="card-coleta" id="card-${item.nome.replace(/\s+/g, '')}">
-            <div class="info">
+            
+        <div class="info">
                 <strong>${item.nome.toUpperCase()}</strong>
                 <span>🚚 ${item.tipo} | 🕒 ${horaLimpa}</span>
             </div>
-            <button class="btn-liberar" onclick="liberarColeta('${item.nome}')">Liberar</button>
-        </div>`;
+                <div class="acoes">
+            <label class="container-check">
+                <input type="checkbox" onchange="marcarVisto(this)">
+                <span class="checkmark">ciente</span>
+                <button class="btn-liberar" onclick="liberarColeta('${item.nome}')">Liberar</button>
+                
+            </label>
+            </div>
+            
+            
+        </div>
+        `
+        ;
+        
 }
 
 async function adicionarColeta() {
