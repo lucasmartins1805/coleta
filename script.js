@@ -15,13 +15,10 @@ function criarCardHTML(item) {
                 <strong>${item.nome.toUpperCase()}</strong>
                 <span>🚚 ${item.tipo} | 🕒 ${horaLimpa}</span>
             </div>
-                <div class="acoes">
-            <label class="container-check">
-                <input type="checkbox" onchange="marcarVisto(this)">
-                <span class="checkmark">ciente</span>
+                
                 <button class="btn-liberar" onclick="liberarColeta('${item.nome}')">Liberar</button>
                 
-            </label>
+            
             </div>
             
             
@@ -79,6 +76,7 @@ async function liberarColeta(nome) {
 
 async function buscarColetas() {
     const lista = document.getElementById('listaColetas');
+    console.log("Atualizando lista de registros...");
     // Só mostramos "Carregando" na primeira vez que abre a página
     if (lista.innerHTML === "") lista.innerHTML = "<p>Buscando dados...</p>";
 
@@ -95,6 +93,8 @@ async function buscarColetas() {
     } catch (e) {
         console.error(e);
     }
+   
+     setInterval(buscarDados, 10);
 }
 
 // Inicia a lista
